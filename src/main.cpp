@@ -16,7 +16,8 @@ int main(int argc, char *argv[])
                 break;
             }
         }
-    } else {
+    }
+    else {
         std::string filename = std::filesystem::path(argv[0]).filename();
         std::cout << "Usage: " << filename << " url=<url>\n";
     }
@@ -26,10 +27,13 @@ int main(int argc, char *argv[])
         CustomScraper cs(url);
         if (cs.empty()) {
             std::cout << "Nothing found!\n";
-        } else {
+        }
+        else {
+            std::cout << cs.count() << "\n";
             std::cout << cs.toStr() << "\n";
         }
-    } else {
+    }
+    else {
         std::cerr << "\n";
     }
 

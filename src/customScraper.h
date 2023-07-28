@@ -4,12 +4,11 @@
 #include <string>
 #include <vector>
 
-class CustomScraper
-{
+class CustomScraper {
 public:
 
     CustomScraper(std::string url);
-    ~CustomScraper(){};
+    ~CustomScraper() {};
 
     bool empty();
     bool save(std::string text, std::filesystem::path path);
@@ -22,5 +21,5 @@ private:
     std::vector<std::vector<std::string> > tables;
 
     std::string getRequest(std::string url);
-    std::vector<std::vector<std::string> > scrapeText(std::string htmlDocument);
+    std::vector<std::vector<std::string> > scraper(std::string htmlDocument, const char *xpath);
 };
