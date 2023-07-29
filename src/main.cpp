@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
     }
     else {
         std::string filename = std::filesystem::path(argv[0]).filename();
-        std::cout << "Usage: " << filename << " url=<url>\n";
+        std::cout << "Usage: " << filename << " url=<url or file>\n";
     }
 
     std::cout << "URL: " << std::quoted(url) << '\n';
@@ -29,12 +29,15 @@ int main(int argc, char *argv[])
             std::cout << "Nothing found!\n";
         }
         else {
-            std::cout << cs.count() << "\n";
-            std::cout << cs.toStr() << "\n";
+            auto text = cs.toStr(';');
+            cs.save(text);
+
+            std::cout << "Found: " << cs.count() << "\n";
+            std::cout << "Data:\n" << text << "\n";
         }
     }
     else {
-        std::cerr << "\n";
+        std::cerr << "There was something wrong!\n";
     }
 
     return 0;
